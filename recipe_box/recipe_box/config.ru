@@ -5,7 +5,3 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 run ApplicationController
-use NewModelsController
-use RecipesController
-use NamesController
-use RecipeBoxesController
