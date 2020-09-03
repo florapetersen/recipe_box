@@ -30,8 +30,8 @@ class RecipesController < ApplicationController
     redirect "/recipes/:id"
   end
 
-  # DELETE: /recipes/5/delete
-  delete "/recipes/:id/delete" do
+  # DELETE: /recipes/5
+  delete "/recipes/:id" do
     redirect "/recipes"
   end
 end
