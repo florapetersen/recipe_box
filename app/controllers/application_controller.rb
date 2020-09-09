@@ -4,14 +4,24 @@ class ApplicationController < Sinatra::Base
 
   configure do
     set :public_folder, 'public'
-    set :views, 'app/views'
+    set :views, 'app/views' # we do this so that the default will be to look
+    # at views in the same directory where ApplicationController is? and the same
+    # directory where config.ru is
     set :sessions, true 
     set :session_secret, ENV["SESSION_SECRET"]
     set :method_override, true 
+    register Sinatra::Flash
   end
 
   get "/" do
-    erb :welcome
+    @recipes = Recipe.all # get all of the recipes from the recipe model 
+    erb :"/recipes/index.html" # take that information and render it in a view,
+    # which responds by sending that info back to the browser
+  end
+
+  not_found do 
+    flash[:error] = "Couldn't find that route!"
+    redirect "/recipes"
   end
 
   private 
@@ -22,5 +32,12 @@ class ApplicationController < Sinatra::Base
 
   def logged_in? 
     !!current_user 
+  end
+
+  def redirect_if_not_logged_in
+    if !logged_in?
+      flash[:error] = "You must be logged in to view that page"
+      redirect request.referrer || "/login"
+    end 
   end
 end

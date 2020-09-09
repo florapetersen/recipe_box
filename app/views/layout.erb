@@ -16,16 +16,19 @@
   <body>
     <div class="wrapper">
       <nav>
+        <a href="/recipes">Recipes</a>
         <% if !logged_in? %>
           <a href="/login">Log In</a>
           <a href="/users/new">Sign Up</a>
         <% else %>
-          <form method="post" action="/logout">
+          <a href="/recipes/new">New Recipe</a>
+          <form method="post" action="/logout" style="display: inline-block;">
             <input type="hidden" name="_method" value="delete" />
             <input type="submit" value="Log Out" />
           </form>
         <% end %>
       </nav>
+      <%= styled_flash %>
         <%= yield %>
 
       <footer class="branding">

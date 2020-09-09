@@ -1,1 +1,31 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<h1>New Recipe</h1>
+
+<% if @recipe.errors.any? %>
+    <div id="error_explanation">
+        <h2><%= @recipe.errors.count %> this recipe was not saved due to error(s):</h2>
+
+        <ul>
+        <% @recipe.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+        </ul>
+    </div>
+<% end %>
+<form method="post" action="/recipes">
+    <p>
+        <div><label for="title">Title</label></div>
+        <input id="title" type="text" name="recipe[title]" value="<%= @recipe.title %>" />
+    </p>
+    <p>
+        <div><label for="content">Give us your recipe!</label></div>
+        <textarea rows="8" cols="45" id="content" type="text" name="recipe[content]"><%= @recipe.content %></textarea>
+    </p>
+    <p>Add Tags</p>
+    <p>
+        <% Tag.all.each do |tag| %>
+            <input type="checkbox" name="recipe[tag_ids][]" id="<%= tag.id %>" value="<%= tag.id %>"><%= tag.name %><br>
+        <% end %>
+    </p>
+    <input type="submit" value="Create Recipe" /> 
+
+</form>

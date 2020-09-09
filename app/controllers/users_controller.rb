@@ -1,16 +1,16 @@
 class UsersController < ApplicationController
 
     get '/users/new' do 
-        erb :'/user/new'
+        erb :'/users/new'
     end 
 
     post '/users' do 
-        @user = User.new(email: params[:email], password: params[:password])
-        if @user.save 
-            session[:id] = @user.id 
-            redirect "/" 
+        @user = User.new(email: params[:email], password: params[:password]) # create new user 
+        if @user.save # if able to save user 
+            session[:id] = @user.id # assign session id to usr id, which logs them in 
+            redirect "/" # direct user to homepage 
         else 
-            erb :'users/new'
+            erb :'users/new' # if can't save user, redirect to sign up page
         end
     end
 end
