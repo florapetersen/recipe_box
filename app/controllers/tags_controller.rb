@@ -17,6 +17,7 @@ class TagsController < ApplicationController
 
   # GET: /tags/5
   get "/tags/:id" do
+    @tag = Tag.find_by_id(params[:id])
     erb :"/tags/show.html"
   end
 
@@ -35,3 +36,5 @@ class TagsController < ApplicationController
     redirect "/tags"
   end
 end
+
+
