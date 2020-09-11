@@ -1,5 +1,14 @@
-<h1>Welcome to RecipeBox!</h1>
-<h2>Recipes</h2>
+<% if @current_user %>
+   <h1>Welcome to Your RecipeBox!</h1>
+   <h2>Your Recipes</h2>
+<% else %>
+   <h1>Welcome to RecipeBox!</h1>
+   <h2>Recipes</h2>
+<% end %>
 <% @recipes.each do |recipe| %>
    <p><a href="/recipes/<%= recipe.id %>"><%= recipe.title %></p>
+<% end %><br>
+<h2>Find a Recipe by Category</h2>
+<% Tag.all.each do |tag| %>
+   <p><a href="/tags/<%= tag.id %>"><%= tag.name %></p>
 <% end %>

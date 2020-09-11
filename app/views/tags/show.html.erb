@@ -1,4 +1,4 @@
-<h1>Your <%= @tag.name %> recipes!</h1>
+<h1><%= @tag.name %> recipes</h1>
 <% @tag.recipes.each do |recipe| %>
    <p><a href="/recipes/<%= recipe.id %>"><%= recipe.title %></p>
 <% end %>

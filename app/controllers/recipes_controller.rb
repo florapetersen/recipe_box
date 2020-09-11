@@ -3,6 +3,7 @@ class RecipesController < ApplicationController
   # GET: /recipes
   get "/recipes" do
     @recipes = Recipe.all # get all of the recipes from the recipe model 
+    @current_user = current_user 
     erb :"/recipes/index.html" # render all the recipes in a view,
     # which responds by sending that info back to the browser 
   end
@@ -76,5 +77,13 @@ class RecipesController < ApplicationController
 
   def authorize_recipe(recipe)
     current_user == recipe.author 
+  end
+
+  def current_user 
+    User.find_by_id(session[:id])
+  end 
+
+  def logged_in
+    !!current_user 
   end
 end

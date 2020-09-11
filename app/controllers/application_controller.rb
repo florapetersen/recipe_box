@@ -15,6 +15,7 @@ class ApplicationController < Sinatra::Base
 
   get "/" do
     @recipes = Recipe.all # get all of the recipes from the recipe model 
+    @current_user = current_user
     erb :"/recipes/index.html" # take that information and render it in a view,
     # which responds by sending that info back to the browser
   end
@@ -32,12 +33,5 @@ class ApplicationController < Sinatra::Base
 
   def logged_in? 
     !!current_user 
-  end
-
-  def redirect_if_not_logged_in
-    if !logged_in?
-      flash[:error] = "You must be logged in to view that page"
-      redirect request.referrer || "/login"
-    end 
   end
 end
