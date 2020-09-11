@@ -1,14 +1,18 @@
 <% if @current_user %>
    <h1>Welcome to Your RecipeBox!</h1>
    <h2>Your Recipes</h2>
+   <% @recipes.each do |recipe| %>
+      <p><a href="/recipes/<%= recipe.id %>"><%= recipe.title %></p>
+   <% end %><br>
+   <h2>Find a Recipe by Category</h2>
+   <% Tag.all.each do |tag| %>
+      <p><a href="/tags/<%= tag.id %>"><%= tag.name %></p>
+   <% end %>
 <% else %>
    <h1>Welcome to RecipeBox!</h1>
-   <h2>Recipes</h2>
-<% end %>
-<% @recipes.each do |recipe| %>
-   <p><a href="/recipes/<%= recipe.id %>"><%= recipe.title %></p>
-<% end %><br>
-<h2>Find a Recipe by Category</h2>
-<% Tag.all.each do |tag| %>
-   <p><a href="/tags/<%= tag.id %>"><%= tag.name %></p>
+   <h3>Sign up to share your recipes with the world!</h3><br>
+   <h2>What Will You Eat Today?</h2>
+   <% Tag.all.each do |tag| %>
+      <p><a href="/tags/<%= tag.id %>"><%= tag.name %></p>
+   <% end %>
 <% end %>
