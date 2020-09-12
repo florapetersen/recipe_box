@@ -19,7 +19,12 @@ To try out RecipeBox:
 - run ```shotgun``` 
 - open up your web browser and enter the local url provided by the shotgun server
 
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
 ## License
 
-Licensed with MIT - see LICENSE file 
+Licensed with [MIT](https://choosealicense.com/licenses/mit/)
 
