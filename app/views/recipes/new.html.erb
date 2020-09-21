@@ -1,16 +1,5 @@
 <h1>New Recipe</h1>
-
-<% if @recipe.errors.any? %>
-    <div id="error_explanation">
-        <h2><%= @recipe.errors.count %> this recipe was not saved due to error(s):</h2>
-
-        <ul>
-        <% @recipe.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-        <% end %>
-        </ul>
-    </div>
-<% end %>
+<%= @error %>
 <form method="post" action="/recipes">
     <p>
         <div><label for="title">Title</label></div>

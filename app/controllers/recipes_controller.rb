@@ -21,6 +21,7 @@ class RecipesController < ApplicationController
     if @recipe.save 
       redirect "/recipes"
     else
+      flash[:error] = "Please fill out all fields"
       erb :"/recipes/new.html"
     end
   end
@@ -45,6 +46,7 @@ class RecipesController < ApplicationController
       flash[:success] = "Recipe updated"
       redirect "/recipes/#{@recipe.id}"
     else
+      flash[:error] = "Please fill out all fields"
       erb :"/recipes/edit.html"
     end
   end
@@ -55,42 +57,5 @@ class RecipesController < ApplicationController
     redirect_if_not_authorized 
     @recipe.destroy
     redirect "/recipes"
-  end
-
-  private 
-
-  def set_recipe 
-    @recipe = Recipe.find_by_id(params[:id])
-    if @recipe.nil?
-      flash[:error] = "Couldn't find a Recipe with id: #{params[:id]}"
-      redirect "/recipes"
-    end 
-  end
-
-  def redirect_if_not_authorized 
-    redirect_if_not_logged_in
-    if !authorize_recipe(@recipe)
-      flash[:error] = "You don't have permission to do that!"
-      redirect "/recipes"
-    end 
-  end
-
-  def authorize_recipe(recipe)
-    current_user == recipe.author 
-  end
-
-  def current_user 
-    User.find_by_id(session[:id])
-  end 
-
-  def logged_in
-    !!current_user 
-  end
-
-  def redirect_if_not_logged_in
-    if !logged_in?
-      flash[:error] = "You must be logged in to view that page"
-      redirect request.referrer || "/login"
-    end
   end
 end

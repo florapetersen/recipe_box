@@ -1,16 +1,6 @@
 <h1>Edit Recipe</h1>
+<%= @error %>
 
-<% if @recipe.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= @recipe.errors.count %> this recipe was not saved due to error(s):</h2>
- 
-    <ul>
-    <% @recipe.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
 <form method="post" action="/recipes/<%= @recipe.id %>">
   <input type="hidden" name="_method" value="patch" />
   <p>

@@ -28,9 +28,10 @@ Specs:
     - ```#redirect_if_not_authorized``` displays error if user not authorized to modify content
 - [x] Include user input validations
     - ```@user.save``` uses validations to check if required fields are properly filled out
+    - ```User validates :email, presence: true, uniqueness: true```
 - [ ] BONUS - not required - Display validation failures to user with error message (example form URL e.g. /posts/new)
 - [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
-    - README.md: recipebox description, installation, contributor's guide, license
+    - README.md: recipebox description, installation, contributing, license
 
 Confirm
 - [x] You have a large number of small Git commits

@@ -10,6 +10,7 @@ class UsersController < ApplicationController
             session[:id] = @user.id # assign session id to usr id, which logs them in 
             redirect "/" # direct user to homepage 
         else 
+            flash[:error] = "Please fill out all fields"
             erb :'users/new' # if can't save user, redirect to sign up page
         end
     end
