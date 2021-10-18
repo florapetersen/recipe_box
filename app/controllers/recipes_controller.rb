@@ -3,7 +3,6 @@ class RecipesController < ApplicationController
   # GET: /recipes
   get "/recipes" do
     @recipes = Recipe.all # get all of the recipes from the recipe model 
-    @current_user = current_user 
     erb :"/recipes/index.html" # render all the recipes in a view,
     # which responds by sending that info back to the browser 
   end
@@ -17,6 +16,7 @@ class RecipesController < ApplicationController
 
   # POST: /recipes -> create
   post "/recipes" do
+    binding.pry
     @recipe = current_user.recipes.build(title: params[:recipe][:title],content:params[:recipe][:content], tag_ids: params[:recipe][:tag_ids])
     if @recipe.save 
       redirect "/recipes"
@@ -25,6 +25,11 @@ class RecipesController < ApplicationController
       erb :"/recipes/new.html"
     end
   end
+
+  get "/recipes/mine" do 
+    @recipes = current_user.recipes
+    erb :"/recipes/index.html"
+  end 
 
   # GET: /recipes/5 --> show 
   get "/recipes/:id" do
