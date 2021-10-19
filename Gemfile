@@ -11,18 +11,20 @@ gem 'tux'
 gem 'sinatra-flash'
 gem 'rails_12factor'
 gem 'foreman'
+#gem 'dotenv'
+gem 'pg', '0.20'
 
-group :development do 
+group :development, :test do 
   gem 'sqlite3', '<1.4'
   gem 'shotgun'
   gem 'tux'
   gem 'pry'
-  gem 'dotenv'
   gem 'session_secret_generator'
+  gem 'dotenv-rails'
 end
 
 group :production do 
-  gem 'pg', '0.20'
+
 end
 
 group :test do

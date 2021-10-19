@@ -2,6 +2,9 @@ ENV['SINATRA_ENV'] ||= "development"
 
 require 'bundler/setup'
 Bundler.require(:default, ENV['SINATRA_ENV'])
+if ['development', 'test'].include? ENV['SINATRA_ENV']
+  Dotenv::Railtie.load
+end
 
 set :database_file, "./database.yml"
 
