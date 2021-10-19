@@ -2,15 +2,9 @@ ENV['SINATRA_ENV'] ||= "development"
 
 require 'bundler/setup'
 Bundler.require(:default, ENV['SINATRA_ENV'])
-if ['development', 'test'].include? ENV['SINATRA_ENV']
-  Dotenv::Railtie.load
-end
+Dotenv.load if ENV['SINATRA_ENV'] == "development"
 
 set :database_file, "./database.yml"
-
-Dotenv.load # we generated a "secret" and put it equal to SESSION_SECRET in .env 
-# now we can load the environment variable (SESSION_SECRET), from the .env file,
-# into our app with the Dotenv.load method 
 
 require './app/controllers/application_controller'
 require_all 'app'
