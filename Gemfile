@@ -11,7 +11,6 @@ gem 'bcrypt'
 gem 'sinatra-flash'
 gem 'rails_12factor'
 gem 'foreman'
-#gem 'dotenv'
 
 
 group :development, :test do 
