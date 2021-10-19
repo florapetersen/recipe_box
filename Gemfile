@@ -1,9 +1,11 @@
 source 'http://rubygems.org'
 
+ruby '2.6.1'
+
 gem 'sinatra'
 gem 'activerecord', "< 6", :require => 'active_record'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
-gem 'pg', '0.20'
+#gem 'pg', '0.20'
 gem 'rake'
 gem 'require_all'
 gem 'thin'
@@ -12,7 +14,6 @@ gem 'sinatra-flash'
 gem 'rails_12factor'
 gem 'foreman'
 
-
 group :development, :test do 
   gem 'sqlite3', '<1.4'
   gem 'shotgun'
@@ -20,6 +21,10 @@ group :development, :test do
   gem 'pry'
   gem 'session_secret_generator'
   gem 'dotenv'
+end
+
+group :production do 
+  gem 'pg', '0.20'
 end
 
 group :test do
