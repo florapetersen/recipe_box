@@ -22,10 +22,6 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
-group :production do 
-
-end
-
 group :test do
   gem 'rspec'
   gem 'capybara'
