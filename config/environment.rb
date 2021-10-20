@@ -1,6 +1,7 @@
 ENV['SINATRA_ENV'] ||= "development"
 
 require 'bundler/setup'
+require 'dotenv'
 Bundler.require(:default, ENV['SINATRA_ENV'])
 Dotenv.load if ENV['SINATRA_ENV'] == "development"
 
