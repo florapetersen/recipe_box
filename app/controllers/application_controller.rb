@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views' # we do this so that the default will be to look at views in the same directory where 
     # ApplicationController and config.ru are
     set :sessions, true # enables sessions 
-    set :session_secret, ENV.fetch["SESSION_SECRET"] # session_secret set to ENV["SESSION_SECRET"]
+    set :session_secret, ENV["SESSION_SECRET"] # session_secret set to ENV["SESSION_SECRET"]
     set :method_override, true # so we're able to send a delete request for "/logout"
     register Sinatra::Flash
   end
