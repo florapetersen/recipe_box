@@ -16,7 +16,6 @@ class RecipesController < ApplicationController
 
   # POST: /recipes -> create
   post "/recipes" do
-    binding.pry
     @recipe = current_user.recipes.build(title: params[:recipe][:title],content:params[:recipe][:content], tag_ids: params[:recipe][:tag_ids])
     if @recipe.save 
       redirect "/recipes"
